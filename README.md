@@ -33,3 +33,4 @@ If you don't know exactly what to do, contact me.
 ```
 * Put them into a zip file
 * Go to [cPanel File Manager](https://sg11.fcomet.com:2083/cpsess1197729065/frontend/paper_lantern/filemanager/index.html)
+* Upload the zip file in `public_html` folder
