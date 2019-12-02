@@ -23,6 +23,8 @@ If you don't know exactly what to do, contact me.
 	- routes
 	- storage
 	- artisan
+	- .env.staging / .env.production
+	- .htaccess.staging / .htaccess.production
 	- composer.json
 	- composer.lock
 	- package.json
@@ -34,16 +36,18 @@ If you don't know exactly what to do, contact me.
 * Put them into a zip file
 * Go to [cPanel File Manager](https://sg11.fcomet.com:2083/cpsess1197729065/frontend/paper_lantern/filemanager/index.html)
 * Upload and extract the zip file in `public_html` folder
-* Generate a new app key using command: `php artisan key:generate`
-* Prepare `.env` and upload to that folder also
+* Prepare `.env` and upload to that folder also (just remove the `.staging` or `.production`
 * Now open the `cPanel Terminal` and run the following commands
 ```
-    cd public_html
-    composer install
-    npm install
-    php artisan key:generate
+	cd public_html
+	composer install
+	php artisan key:generate
+	php artisan migrate
+	php artisan db:seed
+	composer dumpautoload -o
+	php artisan config:cache
 ```
-* Upload the `.htaccess` file in the folder with this content
+* [Optional] Upload the `.htaccess` file in the folder with this content
 ```
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -79,18 +83,12 @@ RewriteRule ^/?$ "https\:\/\/onodatakoyaki\.com\/" [R=301,L]
 ```
 * Now try to visit the site [onodatakoyaki.com](https://onodatakoyaki.com)
 * The site must load (hit `CTRL+F5` if not) otherwise repeat the steps above
-* Next is you need to setup the database
-* Run the following commands
-```
-    php artisan migrate
-    php artisan db:seed
-```
 * If you encounter an error regarding `Undefined audits` just upload the `Blueprint.php` it is located at:
 ```
 <user>\onodaversioncontrol\vendor\laravel\framework\src\Illuminate\Database\Schema
 ```
 * Upload the `Blueprint.php` in the same path on `public_html` folder
-* Then run the final commands for optimization
+* [Optional] Then run the final commands for optimization
 ```
 composer dumpautoload -o
 php artisan config:cache
