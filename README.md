@@ -128,3 +128,18 @@ deployment:
     - /bin/cp -r resources $path                                          # copy resources folder
     - /bin/cp -r routes $path                                             # copy routes folder
 ```
+
+### How to deploy to Onoda Production Site
+#### To Deploy website files do the following
+* Find the file ```.cpanel.yml```
+* Make sure that the domain is pointing to ```export domain=public_html```
+* Save the file, commit changes and Push
+
+#### To Deploy database changes
+* Open the `cPanel Terminal` and run the following commands
+```
+    cd public_html
+    composer install
+    npm install
+    php artisan migrate
+```
