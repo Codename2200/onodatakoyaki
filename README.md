@@ -139,7 +139,5 @@ deployment:
 * Open the `cPanel Terminal` and run the following commands
 ```
     cd public_html
-    composer install
-    npm install
     php artisan migrate
 ```
