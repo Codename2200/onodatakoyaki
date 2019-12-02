@@ -98,6 +98,14 @@ php artisan config:cache
 * Done and Enjoy!
 
 
-### Step by step process (further deployments)
+### How to create new repository
 
-* TODO
+* Go to cPanel - File Manager
+* Create a new folder ```onodaversioncontrolstg```
+* You may want to generate new SSH if necessary
+* Then go to cPanel - Git Version Control
+* Create new one
+* Turn off ```Clone a Repository``` then apply required information
+* Now go to your local ``Git Extension / Git Bash``` and clone the new repo
+* Commit changes and Push. Done!
+
