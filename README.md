@@ -144,3 +144,43 @@ deployment:
     php artisan key:generate
     php artisan migrate
 ```
+* Then create/update ```.htaccess``` file
+* This is Staging sample .htaccess file
+```
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Access public folder
+    RewriteCond %{REQUEST_URI} !^public/
+    RewriteRule ^(.*)$ public/$1 [L] #relative substitution
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^staging\.onodatakoyaki\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.staging\.onodatakoyaki\.com$
+RewriteRule ^/?$ "https\:\/\/staging\.onodatakoyaki\.com\/" [R=301,L]
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^onodatak\.sg11\.fcomet\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.onodatak\.sg11\.fcomet\.com$
+RewriteRule ^/?$ "https\:\/\/onodatak\.sg11\.fcomet\.com\/" [R=301,L]
+```
