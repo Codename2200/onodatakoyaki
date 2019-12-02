@@ -127,6 +127,13 @@ deployment:
     - /bin/cp -r public $path                                             # copy public folder
     - /bin/cp -r resources $path                                          # copy resources folder
     - /bin/cp -r routes $path                                             # copy routes folder
+    - /bin/cp -r storage $path
+    - /bin/cp composer.json $path
+    - /bin/cp composer.lock $path
+    - /bin/cp package.json $path
+    - /bin/cp package-lock.json $path
+    - /bin/cp webpack.mix.js $path
+    - /bin/cp yarn.lock $path
 ```
 
 ### How to deploy to Onoda Production Site
