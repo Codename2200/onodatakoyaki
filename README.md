@@ -107,5 +107,24 @@ php artisan config:cache
 * Create new one
 * Turn off ```Clone a Repository``` then apply required information
 * Now go to your local ``Git Extension / Git Bash``` and clone the new repo
-* Commit changes and Push. Done!
+* Commit changes. Done!
 
+### Before you Push anything, do the following
+
+* On your repo files you must have one ```.cpanel.yml```
+* Sample content is:
+```
+---
+deployment:
+  tasks:
+    - export domain=staging.onodatakoyaki.com                             # uncomment for staging deployment
+    #- export domain=public_html                                          # uncomment for production deployment
+    - export path=/home/onodatak/$domain                                  # deployment path
+    - /bin/cp -r app $path                                                # copy app folder
+    - /bin/cp -r bootstrap $path                                          # copy bootstrap folder
+    - /bin/cp -r config $path                                             # copy config folder
+    - /bin/cp -r database $path                                           # copy database folder
+    - /bin/cp -r public $path                                             # copy public folder
+    - /bin/cp -r resources $path                                          # copy resources folder
+    - /bin/cp -r routes $path                                             # copy routes folder
+```
