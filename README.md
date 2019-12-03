@@ -41,6 +41,7 @@ If you don't know exactly what to do, contact me.
 ```
 	cd public_html
 	composer install
+	npm install
 	php artisan key:generate
 	php artisan migrate
 	php artisan db:seed
