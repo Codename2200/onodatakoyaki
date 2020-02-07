@@ -229,3 +229,34 @@ RewriteCond %{HTTP_HOST} ^onodatak\.sg11\.fcomet\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.onodatak\.sg11\.fcomet\.com$
 RewriteRule ^/?$ "https\:\/\/onodatak\.sg11\.fcomet\.com\/" [R=301,L]
 ```
+### How to delete stocks in a product
+* Find product id
+```
+select * from products where name like 'Showa'
+Product id = 23
+```
+* Find StockParents Id
+```
+select * from stock_parents where product_id = 23
+StockParentId = 7
+```
+* Find StockInIds
+```
+select * from stock_ins where stockparent_id = 7
+IDS (7, 51)
+```
+* Find StockOuts
+```
+select * from stock_outs where stockin_id IN (7, 51)
+```
+* Find StockLost
+```
+select * from stock_losts where stockin_id IN (7, 51)
+```
+* DELETE OPERATIONS
+```
+delete from stock_losts where stockin_id IN (7, 51)
+delete from stock_outs where stockin_id IN (7, 51)
+delete from stock_ins where stockparent_id = 7
+delete from stock_parents where product_id = 23
+```
