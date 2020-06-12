@@ -260,4 +260,15 @@ delete from stock_outs where stockin_id IN (7, 51)
 delete from stock_ins where stockparent_id = 7
 delete from stock_parents where product_id = 23
 ```
-### June 13 Changes
+### June 13, 2020 Changes
+1. Match the Inventory in the Home Page
+	1. Date range should represent the actual count on that specific period
+	2. Beginning + In) - Out+Lost = Ending Balance
+2. Same with the report page; should match date range and Data count
+3. Display all products in the Inventory page even those with no transaction on the detault date this Month
+
+**Issue**
+```
+In the home page if we choose  a date: 05/01/2020 - 05/31/2020
+The al -in Tray 6's- ONODA should not have 18400 available
+```
