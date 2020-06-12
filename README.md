@@ -260,3 +260,4 @@ delete from stock_outs where stockin_id IN (7, 51)
 delete from stock_ins where stockparent_id = 7
 delete from stock_parents where product_id = 23
 ```
+### June 13 Changes
