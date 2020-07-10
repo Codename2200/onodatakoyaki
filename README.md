@@ -274,6 +274,7 @@ The al -in Tray 6's- ONODA should not have 18400 available
 ```
 ### July 11, 2020 Changes and Deployment
 **Tasks**
+
 1. Adjusted the code to point all transaction date filter to Receive Date and Delivery Date
 2. Added functionality to update Receive Date. The Delivery Date was already updatable.
 3. Add previous link navigation
@@ -281,4 +282,13 @@ The al -in Tray 6's- ONODA should not have 18400 available
 5. Refactor the SQL queries in a way that will retain all filtering options.
 
 ***Deployment***
-1. 
+
+1. Commit and push the code
+2. Go to PHP Admin and execute the following queries
+```
+select * from stock_ins where receivedate is NULL
+update stock_ins set receivedate = updated_at where receivedate is NULL
+
+select * from stock_outs where delivery_date is NULL
+update stock_outs set delivery_date = updated_at where delivery_date is NULL
+```
